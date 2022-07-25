@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export const getStaticProps = async () => {
@@ -15,7 +16,9 @@ const Index = (props: any) => {
     console.log(props.beers)
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            {props.beers.map((beer: any) => <span key={beer.id}>{beer.name}</span>)}
+            {props.beers.map((beer: any) => <Link key={beer.id} href={`/${beer.id}`}>
+                <a>{beer.name}</a>
+            </Link>)}
         </div>
     );
 };
